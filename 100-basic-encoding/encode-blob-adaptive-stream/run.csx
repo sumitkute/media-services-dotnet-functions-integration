@@ -148,6 +148,7 @@ public static void Run(CloudBlockBlob inputBlob, string fileName, string fileExt
         IAccessPolicy readPolicy = _context.AccessPolicies.Create("readPolicy",
         TimeSpan.FromHours(4), AccessPermissions.Read);
         ILocator outputLocator = _context.Locators.CreateLocator(LocatorType.Sas, outputAsset, readPolicy);
+        ILocator outputLocatorstream = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin,outputAsset,readPolicy);
         CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
 
         // Get the asset container reference
