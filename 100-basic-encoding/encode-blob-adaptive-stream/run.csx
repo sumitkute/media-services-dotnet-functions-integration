@@ -152,6 +152,7 @@ public static void Run(CloudBlockBlob inputBlob, string fileName, string fileExt
 
         // Get the asset container reference
         string outContainerName = (new Uri(outputLocator.Path)).Segments[1];
+        log.Info($"Out Container Name = { outContainerName }");
         CloudBlobContainer outContainer = destBlobStorage.GetContainerReference(outContainerName);
         CloudBlobContainer targetContainer = inputBlob.Container.ServiceClient.GetContainerReference(_outputContainerName);
 
